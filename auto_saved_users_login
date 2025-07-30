@@ -1,0 +1,17 @@
+#!/bin/bash
+file_path=login.txt
+
+time=$(date)
+echo "This is user login monitor script $time" >> $file_path
+
+echo "Type your name!"
+read username
+
+if [ -z "$username" ]; then
+echo "No username entered" >> $file_path
+who >> $file_path
+else
+echo "username entered $username" >> $file_path
+last $username | head -n 2 >> $file_path
+fi
+echo "your detail has added in $login.txt"
